@@ -53,40 +53,52 @@ p{margin:0}
 
 /* ---------- topo ---------- */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--ink);color:var(--ivory);border-bottom:1px solid var(--line-dark)}
-.top .wrap{display:flex;align-items:center;gap:20px;min-height:82px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
-.brand .emblem{width:50px;height:50px;flex:0 0 50px}
+.top .bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:32px;min-height:112px;padding-block:10px}
+.brand{grid-column:2;grid-row:1;display:flex;align-items:center;gap:16px;text-decoration:none}
+.brand .emblem{width:72px;height:72px;flex:0 0 72px}
 .wordmark{display:flex;flex-direction:column;align-items:center}
 .wm-main,.wm-sub{background:linear-gradient(180deg,#f3dda4 0%,#d4b06a 45%,#a8823d 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.wm-main{display:block;font:400 1.75rem/1 var(--f-caps);letter-spacing:.06em;white-space:nowrap}
-.wm-m{font-family:"Pinyon Script","Snell Roundhand",cursive;font-size:2.55rem;line-height:.8;letter-spacing:0;margin-right:.12em;vertical-align:-.04em}
-.wm-sub{display:block;font:500 .56rem/1 var(--f-caps);letter-spacing:.46em;margin:3px -.46em 0 0}
-.wm-rule{position:relative;display:block;width:100%;height:1px;margin-top:5px;background:linear-gradient(90deg,transparent,var(--gold) 15%,var(--gold) 85%,transparent)}
-.wm-rule::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg)}
+.wm-main{display:block;font:400 2.5rem/1 var(--f-caps);letter-spacing:.06em;white-space:nowrap}
+.wm-m{font-family:"Pinyon Script","Snell Roundhand",cursive;font-size:3.6rem;line-height:.8;letter-spacing:0;margin-right:.12em;vertical-align:-.04em}
+.wm-sub{display:block;font:500 .78rem/1 var(--f-caps);letter-spacing:.46em;margin:5px -.46em 0 0}
+.wm-rule{position:relative;display:block;width:100%;height:1px;margin-top:7px;background:linear-gradient(90deg,transparent,var(--gold) 15%,var(--gold) 85%,transparent)}
+.wm-rule::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg)}
+footer .brand{grid-column:auto;grid-row:auto;justify-self:start}
 footer .brand .emblem{width:56px;height:56px;flex-basis:56px}
-@media (max-width:400px){.brand .emblem{width:42px;height:42px;flex-basis:42px}.wm-main{font-size:1.45rem}.wm-m{font-size:2.15rem}.wm-sub{font-size:.5rem}}
-.nav{display:flex;gap:26px;margin-left:auto}
-.nav a{text-decoration:none;font-size:.9rem;color:var(--mist);padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+footer .wm-main{font-size:1.75rem}footer .wm-m{font-size:2.55rem}footer .wm-sub{font-size:.56rem;margin-top:3px}footer .wm-rule{margin-top:5px}
+.nav{display:contents}
+.nav-g{display:flex;gap:26px;grid-row:1}
+.nav-l{grid-column:1;justify-self:start}
+.nav-r{grid-column:3;justify-self:start}
+.nav a{text-decoration:none;font-size:.9rem;color:var(--mist);padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ivory);border-color:var(--gold)}
-.btn-wa-top{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#d8b66d,#b58f45);color:var(--ink);text-decoration:none;font-weight:600;font-size:.85rem;padding:10px 14px;border-radius:999px;white-space:nowrap}
+.btn-wa-top{grid-column:3;grid-row:1;justify-self:end;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#d8b66d,#b58f45);color:var(--ink);text-decoration:none;font-weight:600;font-size:.85rem;padding:10px 14px;border-radius:999px;white-space:nowrap}
 .btn-wa-top svg{width:18px;height:18px}
-.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line-dark);color:var(--ivory);border-radius:6px;width:44px;height:40px;cursor:pointer}
+.menu-btn{display:none;background:none;border:1px solid var(--line-dark);color:var(--ivory);border-radius:6px;width:44px;height:40px;cursor:pointer}
 .menu-btn span{display:block;width:18px;height:1.5px;background:currentColor;margin:4px auto}
+section[id]{scroll-margin-top:120px}
+@media (max-width:1100px){.nav-g{gap:18px}.nav a{font-size:.84rem}.top .bar{column-gap:20px}.btn-wa-top{padding:10px}.btn-wa-top .lbl{display:none}}
 @media (max-width:920px){
-  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--ink);flex-direction:column;gap:0;padding:8px max(16px,env(safe-area-inset-right,0px)) 18px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line-dark)}
+  .top .bar{grid-template-columns:44px 1fr 44px;min-height:92px;padding-block:8px}
+  .brand{justify-self:center;gap:12px}
+  .brand .emblem{width:54px;height:54px;flex-basis:54px}
+  .wm-main{font-size:1.9rem}.wm-m{font-size:2.75rem}.wm-sub{font-size:.6rem}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--ink);flex-direction:column;padding:8px max(16px,env(safe-area-inset-right,0px)) 18px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line-dark)}
   .nav.open{display:flex}
+  .nav-g{flex-direction:column;gap:0}
   .nav a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:1rem}
-  .menu-btn{display:block}
-  .btn-wa-top{padding:10px}
-  .btn-wa-top .lbl{display:none}
+  .btn-wa-top{grid-column:1;justify-self:start;width:44px;height:44px;padding:0;justify-content:center}
+  .menu-btn{display:block;grid-column:3;grid-row:1;justify-self:end}
+  section[id]{scroll-margin-top:100px}
 }
+@media (max-width:400px){.brand .emblem{width:44px;height:44px;flex-basis:44px}.wm-main{font-size:1.55rem}.wm-m{font-size:2.25rem}.wm-sub{font-size:.5rem}}
 
 /* ---------- hero ---------- */
 .hero{background:var(--ink);color:var(--ivory);overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:56px}
 .hero-copy{min-width:0}
-.hero h1{font-size:clamp(2.3rem,5vw,3.9rem);margin:18px 0 22px;color:#fff}
-.hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
+.hero h1{font-size:clamp(2.3rem,5vw,3.9rem);margin:0 0 22px;color:#fff}
+.hero h1 em{font-style:italic;color:#fff;font-weight:500}
 .hero p.lead{color:#d9d3c6;max-width:56ch;font-size:1.06rem}
 .hero-side{min-width:0;display:grid;gap:18px}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:14px 0;border-block:1px solid var(--line-dark)}
@@ -343,18 +355,22 @@ body.has-cookie .wa-float{bottom:calc(18px + var(--cookie-h,72px))}
 </svg>
 
 <header class="top">
-  <div class="wrap">
+  <div class="wrap bar">
+    <nav class="nav" id="nav" aria-label="Principal">
+      <div class="nav-g nav-l">
+        <a href="#inicio" data-nav="inicio">Início</a>
+        <a href="#areas" data-nav="areas">Áreas de atuação</a>
+        <a href="#artigos" data-nav="artigos">Artigos</a>
+      </div>
+      <div class="nav-g nav-r">
+        <a href="#o-escritorio" data-nav="o-escritorio">O escritório</a>
+        <a href="#contato" data-nav="contato">Contato</a>
+      </div>
+    </nav>
     <a class="brand" href="#inicio" aria-label="Mutti Advogados – início">
       <svg class="emblem" aria-hidden="true"><use href="#i-emblem"/></svg>
       <span class="wordmark"><span class="wm-main"><span class="wm-m">M</span>UTTI</span><span class="wm-sub">ADVOGADOS</span><span class="wm-rule"></span></span>
     </a>
-    <nav class="nav" id="nav" aria-label="Principal">
-      <a href="#inicio" data-nav="inicio">Início</a>
-      <a href="#areas" data-nav="areas">Áreas de atuação</a>
-      <a href="#artigos" data-nav="artigos">Artigos</a>
-      <a href="#o-escritorio" data-nav="o-escritorio">O escritório</a>
-      <a href="#contato" data-nav="contato">Contato</a>
-    </nav>
     <a class="btn-wa-top js-wa" data-msg="Olá, Dra. Carol! Vim pelo site e gostaria de atendimento." href="https://wa.me/5575992518820" target="_blank" rel="noopener" aria-label="WhatsApp">
       <svg aria-hidden="true"><use href="#i-wa"/></svg><span class="lbl">WhatsApp</span>
     </a>
@@ -368,7 +384,6 @@ body.has-cookie .wa-float{bottom:calc(18px + var(--cookie-h,72px))}
   <section class="hero" id="inicio">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">Direito do Trabalho · Salvador e Feira de Santana</span>
         <h1>Advocacia <em>trabalhista</em> com atendimento próximo e responsável</h1>
         <p class="lead">O escritório Mutti Advogados oferece orientação jurídica individualizada a trabalhadores, com atenção à história de cada cliente, análise técnica e acompanhamento transparente em cada etapa do caso.</p>
         <a class="cta-big js-wa" data-msg="Olá, Dra. Carol! Vim pelo site e gostaria de falar sobre uma questão trabalhista." href="https://wa.me/5575992518820" target="_blank" rel="noopener">
@@ -387,8 +402,8 @@ body.has-cookie .wa-float{bottom:calc(18px + var(--cookie-h,72px))}
       </figure>
           <div class="facts">
             <div><strong>15 anos</strong>de advocacia</div>
-            <div><strong>Presencial e online</strong>atendimento nas duas sedes ou à distância</div>
-            <div><strong>Todo o Brasil</strong>conforme as regras de competência e do procedimento aplicável</div>
+            <div><strong>Atendimento</strong>em todo o Brasil</div>
+            <div><strong>On-line</strong>e presencial</div>
           </div>
       </div>
     </div>
@@ -408,8 +423,7 @@ body.has-cookie .wa-float{bottom:calc(18px + var(--cookie-h,72px))}
           <span class="ico"><svg aria-hidden="true"><use href="#i-doc"/></svg></span>
           <h3>Entrar com ação trabalhista</h3>
           <p>Conte o que aconteceu no seu emprego: verbas rescisórias, horas extras, trabalho sem carteira assinada, assédio ou outro problema.</p>
-          <a class="go" href="#formulario">Preencher formulário</a>
-          <a class="go wa js-wa" data-msg="Olá! Quero conversar sobre entrar com uma ação trabalhista." href="https://wa.me/5575992518820" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Ou chamar no WhatsApp</a>
+          <a class="go wa js-wa" data-msg="Olá! Quero conversar sobre entrar com uma ação trabalhista." href="https://wa.me/5575992518820" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
         </article>
         <article class="path">
           <span class="ico"><svg aria-hidden="true"><use href="#i-calc"/></svg></span>
@@ -553,7 +567,7 @@ body.has-cookie .wa-float{bottom:calc(18px + var(--cookie-h,72px))}
         <p>Sob a direção do escritório Mutti Advogados está a Dra. Carol Mutti, advogada com 15 anos de atuação profissional, com foco no Direito do Trabalho.</p>
         <p>Com o apoio de uma equipe orientada para o acolhimento e a análise cuidadosa de cada demanda, o escritório busca identificar caminhos jurídicos adequados e trabalhar com zelo, transparência e responsabilidade.</p>
         <p>Cada caso é avaliado individualmente, com respeito ao sigilo profissional e ao Código de Ética e Disciplina da OAB.</p>
-        <div class="sign"><b>Carol Mutti</b><span>Advogada · OAB/BA nº ______</span></div>
+        <div class="sign"><b>Carol Mutti</b><span>Advogada · OAB/BA 38.154</span></div>
       </div>
     </div>
   </section>
